@@ -207,7 +207,7 @@ class SpeechManager {
 
         if (isDevanagari) {
           // Strict search for Hindi voices (never assign en-IN to Devanagari)
-          const hiVoice = voices.find(
+          const hiVoices = voices.filter(
             v =>
               v.lang.toLowerCase().startsWith('hi') ||
               v.name.toLowerCase().includes('hindi') ||
@@ -216,9 +216,28 @@ class SpeechManager {
               v.name.toLowerCase().includes('swara')
           );
 
-          if (hiVoice) {
-            utterance.voice = hiVoice;
-            utterance.lang = hiVoice.lang || 'hi-IN';
+          if (hiVoices.length > 0) {
+            let matchedVoice: SpeechSynthesisVoice | undefined;
+            if (config.gender === 'male') {
+              matchedVoice = hiVoices.find(
+                v =>
+                  v.name.toLowerCase().includes('madhur') ||
+                  v.name.toLowerCase().includes('hemant') ||
+                  v.name.toLowerCase().includes('male') ||
+                  v.name.toLowerCase().includes('man')
+              );
+            } else {
+              matchedVoice = hiVoices.find(
+                v =>
+                  v.name.toLowerCase().includes('kalpana') ||
+                  v.name.toLowerCase().includes('swara') ||
+                  v.name.toLowerCase().includes('heera') ||
+                  v.name.toLowerCase().includes('female') ||
+                  v.name.toLowerCase().includes('woman')
+              );
+            }
+            utterance.voice = matchedVoice || hiVoices[0];
+            utterance.lang = utterance.voice.lang || 'hi-IN';
           } else {
             // No native Hindi voice installed in OS
             utterance.lang = 'hi-IN';
@@ -235,7 +254,9 @@ class SpeechManager {
                   v.name.includes('George') ||
                   v.name.includes('Mark') ||
                   v.name.includes('Guy') ||
-                  v.name.includes('Christopher'))
+                  v.name.includes('Christopher') ||
+                  v.name.includes('James') ||
+                  v.name.includes('Richard'))
             );
             if (maleVoice) utterance.voice = maleVoice;
           } else {
@@ -248,7 +269,9 @@ class SpeechManager {
                   v.name.includes('Victoria') ||
                   v.name.includes('Natural') ||
                   v.name.includes('Jenny') ||
-                  v.name.includes('Aria'))
+                  v.name.includes('Aria') ||
+                  v.name.includes('Catherine') ||
+                  v.name.includes('Linda'))
             );
             if (femaleVoice) utterance.voice = femaleVoice;
           }

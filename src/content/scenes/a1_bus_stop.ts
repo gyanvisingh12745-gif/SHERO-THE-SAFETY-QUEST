@@ -1,4 +1,5 @@
 import { MissionSceneData } from '../types';
+import { MISSION_01_ASSETS } from '../mission01Manifest';
 
 export const a1_bus_stop: MissionSceneData = {
   id: 'mission-1',
@@ -12,11 +13,11 @@ export const a1_bus_stop: MissionSceneData = {
   environmentName: 'bus_stop_night',
   badgeName: 'COMMUTE GUARDIAN',
   badgeIcon: 'ShieldCheck',
-  takeawayImageSrc: '/comic/12_key_takeaway.png',
+  takeawayImageSrc: MISSION_01_ASSETS.outcome_mission_success.srcWebp,
   storyboardTurns: [
     {
-      id: 't1_meet_gyanvi',
-      imageSrc: '/comic/01_meet_gyanvi.png',
+      id: 't1_meet_hero',
+      imageSrc: MISSION_01_ASSETS.player_neutral.srcWebp,
       titleEn: 'Meet {hero}',
       titleHi: '{hero} से मिलिए',
       speaker: '{hero}',
@@ -26,13 +27,13 @@ export const a1_bus_stop: MissionSceneData = {
       bubbleType: 'narration',
       textEn: "I'm {hero}, a college student who loves learning, exploring new places and dreams of building a safe and independent future for myself and every girl out there.",
       textHi: "मैं {hero} हूँ, एक कॉलेज छात्रा जिसे सीखना, नई जगहों को खोजना और अपने व हर लड़की के लिए एक सुरक्षित और आत्मनिर्भर भविष्य बनाना पसंद है।",
-      mangaBadge: 'MEET GYANVI',
+      mangaBadge: 'INTRO',
       sfx: 'piano',
       cameraZoom: 'normal'
     },
     {
       id: 't2_walking_dusk',
-      imageSrc: '/comic/02_walking_dusk.png',
+      imageSrc: MISSION_01_ASSETS.player_walking_to_safety.srcWebp,
       titleEn: 'On My Way Home',
       titleHi: 'घर का रास्ता',
       speaker: '{hero}',
@@ -48,7 +49,7 @@ export const a1_bus_stop: MissionSceneData = {
     },
     {
       id: 't3_bus_stop_waiting',
-      imageSrc: '/comic/03_bus_stop_waiting.png',
+      imageSrc: MISSION_01_ASSETS.story_waiting.srcWebp,
       titleEn: 'At the Bus Stop',
       titleHi: 'बस स्टैंड पर इंतज़ार',
       speaker: '{hero}',
@@ -64,7 +65,7 @@ export const a1_bus_stop: MissionSceneData = {
     },
     {
       id: 't4_stranger_approaches',
-      imageSrc: '/comic/04_stranger_approaches.png',
+      imageSrc: MISSION_01_ASSETS.story_stranger_approaches.srcWebp,
       titleEn: 'Suddenly, a man approaches me...',
       titleHi: 'अचानक एक अजनबी करीब आता है...',
       speaker: 'Stranger',
@@ -80,7 +81,7 @@ export const a1_bus_stop: MissionSceneData = {
     },
     {
       id: 't5_stranger_closeup',
-      imageSrc: '/comic/05_stranger_closeup.png',
+      imageSrc: MISSION_01_ASSETS.stranger_speaking.srcWebp,
       titleEn: 'Persistent & Uncomfortable',
       titleHi: 'अवांछित ज़िद',
       speaker: 'Stranger',
@@ -95,8 +96,8 @@ export const a1_bus_stop: MissionSceneData = {
       cameraZoom: 'close_up'
     },
     {
-      id: 't6_gyanvi_gasp',
-      imageSrc: '/comic/06_gyanvi_gasp.png',
+      id: 't6_hero_alerted',
+      imageSrc: MISSION_01_ASSETS.player_shocked.srcWebp,
       titleEn: 'Instincts Alerted!',
       titleHi: 'खतरे का अलार्म!',
       speaker: '{hero}',
@@ -111,8 +112,8 @@ export const a1_bus_stop: MissionSceneData = {
       cameraZoom: 'close_up'
     },
     {
-      id: 't7_gyanvi_worried',
-      imageSrc: '/comic/07_gyanvi_worried.png',
+      id: 't7_hero_worried',
+      imageSrc: MISSION_01_ASSETS.player_scared.srcWebp,
       titleEn: 'What Should I Do?',
       titleHi: 'मुझे क्या करना चाहिए?',
       speaker: '{hero}',
@@ -125,6 +126,22 @@ export const a1_bus_stop: MissionSceneData = {
       mangaBadge: 'DECISION TIME',
       sfx: 'heartbeat',
       cameraZoom: 'normal'
+    },
+    {
+      id: 't8_bus_arrival',
+      imageSrc: MISSION_01_ASSETS.busstop_arrival.srcWebp,
+      titleEn: 'Headlights in the Rain',
+      titleHi: 'बारिश में बस की रोशनी',
+      speaker: '{hero}',
+      speakerRole: 'hero',
+      speakerExpression: 'determined',
+      heroExpression: 'determined',
+      bubbleType: 'thought',
+      textEn: "The transit bus is pulling up to the stop! I must act now and choose the safest move.",
+      textHi: "बस स्टैंड पर बस आ रही है! मुझे तुरंत सतर्क होकर सबसे सुरक्षित फैसला लेना होगा।",
+      mangaBadge: 'TRANSIT ARRIVAL',
+      sfx: 'tension',
+      cameraZoom: 'normal'
     }
   ],
   introPanels: [
@@ -134,7 +151,7 @@ export const a1_bus_stop: MissionSceneData = {
       titleHi: '{hero} से मिलिए',
       captionEn: "Hi, I'm {hero}. After a long college day, I'm waiting for my evening bus.",
       captionHi: "नमस्ते, मैं {hero} हूँ। कॉलेज के बाद मैं घर जाने के लिए बस का इंतज़ार कर रही हूँ।",
-      visualKey: '01_meet_gyanvi',
+      visualKey: MISSION_01_ASSETS.player_neutral.srcWebp,
       badge: 'HEROINE',
       soundEffect: 'ping'
     },
@@ -144,7 +161,7 @@ export const a1_bus_stop: MissionSceneData = {
       titleHi: 'शाम का सन्नाटा',
       captionEn: "The shadows stretch across the empty terminal. The streetlights flicker to life.",
       captionHi: "बस स्टैंड पर रोशनी कम होने लगी है और सड़कें शांत हो रही हैं।",
-      visualKey: '03_bus_stop_waiting',
+      visualKey: MISSION_01_ASSETS.busstop_wide.srcWebp,
       badge: 'STREETLIGHT',
       soundEffect: 'ambient'
     },
@@ -154,7 +171,7 @@ export const a1_bus_stop: MissionSceneData = {
       titleHi: 'अजनबी की दस्तक',
       captionEn: "Suddenly, a man steps uncomfortably close and offers a ride into the dark.",
       captionHi: "अचानक एक अनजान आदमी पास आकर अपनी गाड़ी में लिफ्ट देने की पेशकश करता है।",
-      visualKey: '04_stranger_approaches',
+      visualKey: MISSION_01_ASSETS.story_stranger_approaches.srcWebp,
       badge: 'WARNING',
       soundEffect: 'suspense'
     }
@@ -182,7 +199,7 @@ export const a1_bus_stop: MissionSceneData = {
       mangaEffect: 'speed_lines',
       mangaBadge: 'GASP!',
       crowd: [
-        { id: 'riya', name: 'Riya', role: 'Waiting commuter', position: 'left_far', expression: 'nervous' },
+        { id: 'bus_driver', name: 'Bus Driver', role: 'Transit Staff', position: 'left_far', expression: 'kind' },
         { id: 'shopkeeper', name: 'Vendor', role: 'Chai seller', position: 'right_far', expression: 'thinking' }
       ],
       questionEn: 'A stranger offers you a ride. What is the safest thing to do?',
@@ -199,7 +216,7 @@ export const a1_bus_stop: MissionSceneData = {
           educationalTipHi: 'सार्वजनिक जगह की रोशनी और लोगों की मौजूदगी अनजान व्यक्तियों से सुरक्षा देती है।',
           safetyDelta: 25,
           boundariesDelta: 20,
-          outcomeImageSrc: '/comic/09_choice1_safe_walkaway.png',
+          outcomeImageSrc: MISSION_01_ASSETS.outcome_safe_decision.srcWebp,
           outcomeSpeaker: '{hero}',
           outcomeSpeakerRole: 'hero',
           outcomeDialogueEn: "No, thank you. I'll wait here. I'm expecting someone.",
@@ -217,7 +234,7 @@ export const a1_bus_stop: MissionSceneData = {
           educationalTipHi: 'विश्वसनीय व्यक्ति से संपर्क में रहना अनजान व्यक्तियों को दूर रखता है।',
           safetyDelta: 20,
           supportDelta: 25,
-          outcomeImageSrc: '/comic/10_choice2_call_friend.png',
+          outcomeImageSrc: MISSION_01_ASSETS.outcome_maintain_distance.srcWebp,
           outcomeSpeaker: '{hero}',
           outcomeSpeakerRole: 'hero',
           outcomeDialogueEn: "Hi... I'm at the bus stop and someone is offering me a ride. Can you stay on call with me?",
@@ -235,11 +252,11 @@ export const a1_bus_stop: MissionSceneData = {
           educationalTipHi: 'कभी भी अनजान व्यक्ति के निजी वाहन में न बैठें।',
           safetyDelta: -30,
           boundariesDelta: -20,
-          outcomeImageSrc: '/comic/11_choice3_unsafe_car.png',
-          outcomeSpeaker: '{hero}',
-          outcomeSpeakerRole: 'hero',
-          outcomeDialogueEn: "I don't feel comfortable now... The doors locked and he is heading the wrong way!",
-          outcomeDialogueHi: "मुझे अब बहुत डर लग रहा है... गाड़ी के दरवाजे बंद हो गए और यह रास्ता भी गलत है!",
+          outcomeImageSrc: MISSION_01_ASSETS.stranger_suspicious.srcWebp,
+          outcomeSpeaker: 'Stranger',
+          outcomeSpeakerRole: 'stranger',
+          outcomeDialogueEn: "Get in! Hurry up before anyone notices...",
+          outcomeDialogueHi: "जल्दी बैठो! इससे पहले कि कोई देखे...",
           outcomeSfx: 'car'
         }
       ],

@@ -412,7 +412,7 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
       setAwarenessMeter(prev => Math.min(100, prev + 20));
 
       const explanation = lang === 'en' ? choice.feedbackEn : choice.feedbackHi;
-      speechCtrl.speakCorrectFeedback(playerNames.substitute(explanation));
+      speechCtrl.speakCorrectFeedback(playerNames.substitute(explanation), lang);
     } else {
       setIsAnswerCorrect(false);
       setShowConfetti(false);
@@ -429,7 +429,7 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
       soundCtrl.playIncorrect();
 
       const explanation = lang === 'en' ? choice.feedbackEn : choice.feedbackHi;
-      speechCtrl.speakIncorrectFeedback(playerNames.substitute(explanation));
+      speechCtrl.speakIncorrectFeedback(playerNames.substitute(explanation), lang);
     }
   };
 
@@ -465,7 +465,7 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
 
   // Dynamic image resolution for current state — ONLY use file if it actually exists in Mission 1 comic bundle
   const activeImageSrc = useMemo(() => {
-    // Only Mission 1 (A1) has pre-baked comic panel illustrations in /comic/
+    // Only Mission 1 (A1) has pre-baked comic panel illustrations in /comic/ & /assets/mission-01/
     const isMission1 = sceneData.code === 'A1' || sceneData.number === 1;
 
     if (isMission1) {
@@ -473,7 +473,7 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
         return currentTurn.imageSrc;
       }
       if (stage === 'decision') {
-        return '/comic/08_safety_question_card.png';
+        return '/assets/mission-01/environment/busstop_interaction.webp';
       }
       if (stage === 'outcome' && selectedChoice?.outcomeImageSrc) {
         return selectedChoice.outcomeImageSrc;
@@ -709,11 +709,15 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
               />
 
               {activeImageSrc ? (
-                <img
-                  src={activeImageSrc}
-                  alt={currentTurn.titleEn || 'Scene'}
-                  className="w-full h-full object-contain sm:object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700 ease-out z-10"
-                />
+                <picture className="w-full h-full flex items-center justify-center">
+                  <source srcSet={activeImageSrc} type="image/webp" />
+                  <img
+                    src={activeImageSrc.replace(/\.webp$/, '.png')}
+                    alt={currentTurn?.titleEn || 'Scene'}
+                    className="w-full h-full object-contain sm:object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700 ease-out z-10"
+                    loading="eager"
+                  />
+                </picture>
               ) : (
                 /* Dynamic living character visual with CharacterRig inside the panel frame */
                 <div className="w-full h-full flex items-center justify-around relative p-4 z-10">
@@ -871,15 +875,17 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
           <div className="relative w-full max-w-4xl h-full flex flex-col items-center justify-between animate-in zoom-in-95 duration-300">
             {/* Visual Header / Bus Stop Scene */}
             <div className="relative w-full flex-1 max-h-[45vh] rounded-3xl overflow-hidden border-2 border-purple-500/70 shadow-2xl bg-black flex items-center justify-center">
-              <img
-                src="/comic/08_safety_question_card.png"
-                alt="Decision Scene"
-                className="w-full h-full object-contain sm:object-cover"
-                onError={e => {
-                  // Fallback to comic panel 7 if question card image error
-                  (e.target as HTMLImageElement).src = '/comic/07_gyanvi_worried.png';
-                }}
-              />
+              <picture className="w-full h-full flex items-center justify-center">
+                <source srcSet="/assets/mission-01/environment/busstop_interaction.webp" type="image/webp" />
+                <img
+                  src="/assets/mission-01/environment/busstop_interaction.png"
+                  alt="Decision Scene"
+                  className="w-full h-full object-contain sm:object-cover"
+                  onError={e => {
+                    (e.target as HTMLImageElement).src = '/assets/mission-01/player/player_scared.webp';
+                  }}
+                />
+              </picture>
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-black/40" />
 
               <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-10 bg-gradient-to-r from-pink-600 to-rose-600 text-white font-black text-xs px-3.5 py-1 rounded-full uppercase tracking-wider shadow">
@@ -945,11 +951,14 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
               isAnswerCorrect ? 'border-emerald-500 ring-2 ring-emerald-400/40' : 'border-rose-500 ring-2 ring-rose-400/40'
             }`}>
               {selectedChoice.outcomeImageSrc ? (
-                <img
-                  src={selectedChoice.outcomeImageSrc}
-                  alt="Outcome Scene"
-                  className="w-full h-full object-contain sm:object-cover"
-                />
+                <picture className="w-full h-full flex items-center justify-center">
+                  <source srcSet={selectedChoice.outcomeImageSrc} type="image/webp" />
+                  <img
+                    src={selectedChoice.outcomeImageSrc.replace(/\.webp$/, '.png')}
+                    alt="Outcome Scene"
+                    className="w-full h-full object-contain sm:object-cover"
+                  />
+                </picture>
               ) : (
                 <UnifiedAnimeCharacter
                   id="gyanvi"
@@ -994,7 +1003,13 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
               {/* Character speech line on outcome */}
               {selectedChoice.outcomeDialogueEn && (
                 <div className="bg-black/40 rounded-xl p-2.5 mb-2.5 border border-white/10 text-xs sm:text-sm font-semibold text-pink-200">
-                  <span className="font-bold text-white mr-1.5">{heroName}:</span>
+                  <span className="font-bold text-white mr-1.5">
+                    {selectedChoice.outcomeSpeakerRole === 'stranger'
+                      ? 'Stranger'
+                      : selectedChoice.outcomeSpeaker
+                      ? playerNames.substitute(selectedChoice.outcomeSpeaker)
+                      : heroName}:
+                  </span>
                   "{playerNames.substitute(lang === 'en' ? selectedChoice.outcomeDialogueEn : selectedChoice.outcomeDialogueHi || selectedChoice.outcomeDialogueEn)}"
                 </div>
               )}
@@ -1033,11 +1048,14 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
             {/* Takeaways Picture Frame */}
             <div className="relative w-full flex-1 max-h-[56vh] rounded-3xl overflow-hidden border-2 border-purple-500/80 shadow-2xl bg-black flex items-center justify-center">
               {sceneData.takeawayImageSrc ? (
-                <img
-                  src={sceneData.takeawayImageSrc}
-                  alt="Key Takeaways"
-                  className="w-full h-full object-contain sm:object-cover"
-                />
+                <picture className="w-full h-full flex items-center justify-center">
+                  <source srcSet={sceneData.takeawayImageSrc} type="image/webp" />
+                  <img
+                    src={sceneData.takeawayImageSrc.replace(/\.webp$/, '.png')}
+                    alt="Key Takeaways"
+                    className="w-full h-full object-contain sm:object-cover"
+                  />
+                </picture>
               ) : (
                 <UnifiedAnimeCharacter id="gyanvi" expression="happy" scale={1.2} />
               )}
