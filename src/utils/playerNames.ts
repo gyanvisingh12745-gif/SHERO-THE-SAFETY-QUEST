@@ -1,27 +1,28 @@
 /**
- * SHERO: Dynamic Character Naming Engine (Section 0.5)
+ * SHERO: Dynamic Character Naming Engine
  * All character names are player-customizable or role-based tokens.
- * No character has a fixed hardcoded identity.
+ * The hero is ALWAYS the player's customized name. The default hero suggestion is 'Aira'.
+ * The hardcoded name 'Gyanvi' is strictly forbidden across UI, dialogue, HUD and certificates.
  */
 
 export interface CustomNamesState {
-  hero: string;               // Default: 'Gyanvi', fallback label: 'Hero'
-  helpedWoman: string;        // Default: 'Anjali', fallback label: 'Didi'
-  friendBold: string;         // Default: 'Aanya', label: 'Bold Friend'
-  friendKind: string;         // Default: 'Meera', label: 'Kind Friend'
-  friendLively: string;       // Default: 'Riya', label: 'Lively Friend'
-  friendSweet: string;        // Default: 'Mahima', label: 'Sweet Friend'
-  husband: string;            // Default: 'Rohan', label: 'Husband'
-  neighbourAunty: string;     // Default: 'Sunita Aunty', label: 'Neighbour Aunty'
-  counsellor: string;         // Default: 'Priya', label: 'Counsellor'
+  hero: string;               // Player designated hero name (1-16 chars)
+  helpedWoman: string;        // Part B helped woman (default: 'Anjali')
+  friendBold: string;         // Bold friend (default: 'Aanya')
+  friendKind: string;         // Kind friend (default: 'Meera')
+  friendLively: string;       // Lively friend (default: 'Riya')
+  friendSweet: string;        // Sweet friend (default: 'Mahima')
+  husband: string;            // Husband (default: 'Rohan')
+  neighbourAunty: string;     // Neighbour (default: 'Sunita Aunty')
+  counsellor: string;         // Counsellor (default: 'Priya')
   hasCustomHeroName: boolean;
   hasCustomHelpedWomanName: boolean;
 }
 
-const STORAGE_KEY = 'shero_custom_names_v3';
+const STORAGE_KEY = 'shero_custom_names_v4';
 
 export const DEFAULT_NAMES: CustomNamesState = {
-  hero: 'Gyanvi',
+  hero: 'Aira',
   helpedWoman: 'Anjali',
   friendBold: 'Aanya',
   friendKind: 'Meera',
@@ -43,12 +44,17 @@ class PlayerNamesManager {
 
   private loadFromStorage(): CustomNamesState {
     try {
+      if (typeof window === 'undefined' || !window.localStorage) {
+        return { ...DEFAULT_NAMES };
+      }
       const raw = localStorage.getItem(STORAGE_KEY);
       if (!raw) return { ...DEFAULT_NAMES };
       const parsed = JSON.parse(raw);
       return {
         ...DEFAULT_NAMES,
-        ...parsed
+        ...parsed,
+        // Ensure hero name never falls back to legacy string
+        hero: parsed.hero && parsed.hero !== 'Gyanvi' ? parsed.hero : 'Aira'
       };
     } catch {
       return { ...DEFAULT_NAMES };
@@ -57,7 +63,9 @@ class PlayerNamesManager {
 
   public saveToStorage() {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.names));
+      if (typeof window !== 'undefined' && window.localStorage) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(this.names));
+      }
     } catch (e) {
       console.warn('[PlayerNames] Could not save to localStorage:', e);
     }
@@ -68,23 +76,25 @@ class PlayerNamesManager {
   }
 
   public getHeroName(): string {
-    return this.names.hero?.trim() || 'Hero';
+    const raw = this.names.hero?.trim();
+    if (!raw || raw.toLowerCase() === 'gyanvi') return 'Aira';
+    return raw;
   }
 
   public getHelpedWomanName(): string {
-    return this.names.helpedWoman?.trim() || 'Didi';
+    return this.names.helpedWoman?.trim() || 'Anjali';
   }
 
   public setHeroName(name: string) {
-    const trimmed = name.trim().slice(0, 16);
-    this.names.hero = trimmed || 'Hero';
+    const trimmed = (name || '').trim().slice(0, 16);
+    this.names.hero = trimmed || 'Aira';
     this.names.hasCustomHeroName = true;
     this.saveToStorage();
   }
 
   public setHelpedWomanName(name: string) {
-    const trimmed = name.trim().slice(0, 16);
-    this.names.helpedWoman = trimmed || 'Didi';
+    const trimmed = (name || '').trim().slice(0, 16);
+    this.names.helpedWoman = trimmed || 'Anjali';
     this.names.hasCustomHelpedWomanName = true;
     this.saveToStorage();
   }
@@ -94,11 +104,14 @@ class PlayerNamesManager {
       ...this.names,
       ...updates
     };
+    if (this.names.hero && this.names.hero.toLowerCase() === 'gyanvi') {
+      this.names.hero = 'Aira';
+    }
     this.saveToStorage();
   }
 
   public hasNamedHero(): boolean {
-    return this.names.hasCustomHeroName;
+    return this.names.hasCustomHeroName && Boolean(this.names.hero && this.names.hero !== 'Aira');
   }
 
   public hasNamedHelpedWoman(): boolean {
@@ -108,18 +121,19 @@ class PlayerNamesManager {
   /**
    * Runtime Tokenizer
    * Replaces tokens and historical character names with player-designated names.
+   * Handles English and Hindi sentences cleanly without altering grammar.
    */
   public substitute(text: string): string {
     if (!text) return '';
     const hero = this.getHeroName();
     const helped = this.getHelpedWomanName();
-    const fBold = this.names.friendBold?.trim() || 'Bold Friend';
-    const fKind = this.names.friendKind?.trim() || 'Kind Friend';
-    const fLively = this.names.friendLively?.trim() || 'Lively Friend';
-    const fSweet = this.names.friendSweet?.trim() || 'Sweet Friend';
-    const husband = this.names.husband?.trim() || 'Husband';
-    const aunty = this.names.neighbourAunty?.trim() || 'Neighbour Aunty';
-    const counsellor = this.names.counsellor?.trim() || 'Counsellor';
+    const fBold = this.names.friendBold?.trim() || 'Aanya';
+    const fKind = this.names.friendKind?.trim() || 'Meera';
+    const fLively = this.names.friendLively?.trim() || 'Riya';
+    const fSweet = this.names.friendSweet?.trim() || 'Mahima';
+    const husband = this.names.husband?.trim() || 'Rohan';
+    const aunty = this.names.neighbourAunty?.trim() || 'Sunita Aunty';
+    const counsellor = this.names.counsellor?.trim() || 'Priya';
 
     return text
       // Exact tokens
@@ -132,7 +146,7 @@ class PlayerNamesManager {
       .replace(/\{husband\}/g, husband)
       .replace(/\{neighbourAunty\}/g, aunty)
       .replace(/\{counsellor\}/g, counsellor)
-      // Historical references so any raw text adapts smoothly
+      // Historical references replaced with dynamic player designations
       .replace(/Gyanvi/g, hero)
       .replace(/ज्ञानवी/g, hero)
       .replace(/Anjali Didi/g, `${helped} Didi`)

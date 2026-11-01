@@ -11,6 +11,8 @@
 import React, { useEffect, useRef, useState, useMemo } from 'react';
 import { CharacterId, CharacterExpression } from '../content/types';
 
+import { playerNames } from '../utils/playerNames';
+
 export interface CharacterRigProps {
   id: CharacterId | string;
   expression: CharacterExpression;
@@ -31,7 +33,8 @@ const charConfigs: Record<string, {
   eyeColor: string; eyeGlow: string; clothingMain: string; clothingAccent: string;
   name: string; isMale?: boolean;
 }> = {
-  gyanvi: { skin: '#FFF5EB', shadow: '#F2D3BE', hair: '#261642', hairHighlight: '#9D6DE8', eyeColor: '#7C3AED', eyeGlow: '#C4B5FD', clothingMain: '#6D28D9', clothingAccent: '#F472B6', name: 'Gyanvi' },
+  hero: { skin: '#FFF5EB', shadow: '#F2D3BE', hair: '#261642', hairHighlight: '#9D6DE8', eyeColor: '#7C3AED', eyeGlow: '#C4B5FD', clothingMain: '#6D28D9', clothingAccent: '#F472B6', name: 'Hero' },
+  gyanvi: { skin: '#FFF5EB', shadow: '#F2D3BE', hair: '#261642', hairHighlight: '#9D6DE8', eyeColor: '#7C3AED', eyeGlow: '#C4B5FD', clothingMain: '#6D28D9', clothingAccent: '#F472B6', name: 'Hero' },
   aanya: { skin: '#FFF8F2', shadow: '#EACAB5', hair: '#111827', hairHighlight: '#22D3EE', eyeColor: '#0D9488', eyeGlow: '#67E8F9', clothingMain: '#0F766E', clothingAccent: '#F59E0B', name: 'Aanya' },
   meera: { skin: '#FFF6F0', shadow: '#E8C7B0', hair: '#1E1B4B', hairHighlight: '#818CF8', eyeColor: '#4F46E5', eyeGlow: '#A5B4FC', clothingMain: '#4338CA', clothingAccent: '#E0E7FF', name: 'Meera' },
   riya: { skin: '#FFF3E8', shadow: '#E5BF9E', hair: '#3B1D11', hairHighlight: '#FBBF24', eyeColor: '#D97706', eyeGlow: '#FDE68A', clothingMain: '#B45309', clothingAccent: '#EF4444', name: 'Riya' },
@@ -65,8 +68,8 @@ export const CharacterRig: React.FC<CharacterRigProps> = ({
   dimLevel = 0,
   reaction = 'none'
 }) => {
-  const normId = (id || 'gyanvi').toLowerCase();
-  const cfg = charConfigs[normId] || charConfigs.gyanvi;
+  const normId = (id || 'hero').toLowerCase();
+  const cfg = charConfigs[normId] || charConfigs.hero;
 
   // Unique instance ID for gradient references
   const instanceId = useMemo(() => `cr_${++instanceCounter}`, []);

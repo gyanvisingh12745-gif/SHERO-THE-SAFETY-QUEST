@@ -1,5 +1,6 @@
 import React from 'react';
 import { CharacterId, CharacterExpression } from '../content/types';
+import { playerNames } from '../utils/playerNames';
 
 export interface UnifiedAnimeCharacterProps {
   id: CharacterId | string;
@@ -20,7 +21,7 @@ export const UnifiedAnimeCharacter: React.FC<UnifiedAnimeCharacterProps> = ({
   className = '',
   mangaMark
 }) => {
-  const normId = (id || 'gyanvi').toLowerCase();
+  const normId = (id || 'hero').toLowerCase();
 
   // Character Color Schemes and Styles
   const charConfigs: Record<string, {
@@ -34,6 +35,17 @@ export const UnifiedAnimeCharacter: React.FC<UnifiedAnimeCharacterProps> = ({
     clothingAccent: string;
     name: string;
   }> = {
+    hero: {
+      skin: '#FFF5EB',
+      shadow: '#F2D3BE',
+      hair: '#261642',
+      hairHighlight: '#9D6DE8',
+      eyeColor: '#7C3AED',
+      eyeGlow: '#C4B5FD',
+      clothingMain: '#6D28D9',
+      clothingAccent: '#F472B6',
+      name: playerNames.getHeroName()
+    },
     gyanvi: {
       skin: '#FFF5EB',
       shadow: '#F2D3BE',
@@ -43,7 +55,7 @@ export const UnifiedAnimeCharacter: React.FC<UnifiedAnimeCharacterProps> = ({
       eyeGlow: '#C4B5FD',
       clothingMain: '#6D28D9',
       clothingAccent: '#F472B6',
-      name: 'Gyanvi'
+      name: playerNames.getHeroName()
     },
     aanya: {
       skin: '#FFF8F2',

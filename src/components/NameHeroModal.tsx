@@ -81,7 +81,7 @@ export const NameHeroModal: React.FC<NameHeroModalProps> = ({ onComplete, onSkip
                 setTypedName(e.target.value);
                 if (errorMsg) setErrorMsg('');
               }}
-              placeholder="Type a name (e.g. Gyanvi, Aira, Maya...)"
+              placeholder="Type your name (e.g. Aira, Ananya, Priya...)"
               className="w-full px-4 py-3 rounded-xl bg-slate-950 border-2 border-purple-500/50 focus:border-pink-500 focus:outline-none text-white font-bold text-base placeholder:text-slate-500 text-center shadow-inner"
             />
             {errorMsg && (

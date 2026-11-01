@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { PersistentCityWorld } from './components/PersistentCityWorld';
 import { TitleScreen } from './components/TitleScreen';
+import { NameEntryScreen } from './components/NameEntryScreen';
 import { MissionSelectWorld } from './components/MissionSelectWorld';
 import { GameplayView } from './components/GameplayView';
 import { FinalResultsScreen } from './components/FinalResultsScreen';
@@ -21,6 +22,7 @@ import { playerNames } from './utils/playerNames';
 
 export type AppView =
   | 'title'
+  | 'name_entry'
   | 'mission_select'
   | 'gameplay'
   | 'final_results'
@@ -94,10 +96,10 @@ export const App: React.FC = () => {
   const initiateMission = (mission: Mission) => {
     setActiveMission(mission);
 
-    // If hero not named yet, prompt for hero name
+    // If hero not named yet, open name screen
     if (!playerNames.hasNamedHero()) {
       setPendingMissionToStart(mission);
-      setShowHeroNameModal(true);
+      navigateTo('name_entry', 'title');
       return;
     }
 
@@ -113,6 +115,12 @@ export const App: React.FC = () => {
   };
 
   const handleStartFromTitle = () => {
+    // If player hasn't designated their hero name yet, directly show Name Screen first!
+    if (!playerNames.hasNamedHero()) {
+      navigateTo('name_entry', 'title');
+      return;
+    }
+
     const progress = storage.getProgress();
     const unlocked = MISSIONS.filter(m => progress.unlockedMissionIds.includes(m.id));
     const toPlay =
@@ -120,6 +128,23 @@ export const App: React.FC = () => {
       MISSIONS[0];
 
     initiateMission(toPlay);
+  };
+
+  const handleNameConfirm = (confirmedName: string) => {
+    playerNames.setHeroName(confirmedName);
+    if (pendingMissionToStart) {
+      const mission = pendingMissionToStart;
+      setPendingMissionToStart(null);
+      const isPartB = mission.number >= 10 || (mission.id && mission.id.startsWith('episode'));
+      if (isPartB && !playerNames.hasNamedHelpedWoman()) {
+        setShowHelpedWomanNameModal(true);
+        return;
+      }
+      setActiveMission(mission);
+      navigateTo('gameplay');
+    } else {
+      navigateTo('mission_select');
+    }
   };
 
   const handleHeroNameComplete = (name: string) => {
@@ -225,6 +250,14 @@ export const App: React.FC = () => {
             }}
           />
         </div>
+      )}
+
+      {/* ── FIRST PAGE NAME SCREEN (Dedicated Dynamic Player Naming) ────── */}
+      {currentView === 'name_entry' && (
+        <NameEntryScreen
+          onConfirmName={handleNameConfirm}
+          onBack={() => navigateTo('title')}
+        />
       )}
 
       {/* ── MISSION SELECT ───────────────────────────────────────────────── */}

@@ -123,7 +123,7 @@ export const CharacterCreatorModal: React.FC<CharacterCreatorModalProps> = ({
                   setErrorMsg('');
                 }}
                 maxLength={20}
-                placeholder="Enter preferred protagonist name (e.g. Gyanvi)"
+                placeholder="Enter preferred protagonist name (e.g. Aira, Ananya, Priya)"
                 className="w-full px-4 py-3 rounded-xl bg-midnight/80 border border-white/20 focus:border-softCyan focus:ring-1 focus:ring-softCyan text-sm font-orbitron text-white placeholder-mutedLavender/40 outline-none transition"
               />
               <User className="absolute right-3.5 top-3.5 w-4 h-4 text-mutedLavender pointer-events-none" />

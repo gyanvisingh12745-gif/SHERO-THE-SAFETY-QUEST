@@ -1,0 +1,142 @@
+{
+  "version": "2.0.0",
+  "styleAnchor": "premium anime illustration, clean line art, soft cel shading with painterly gradients, cinematic lighting, highly detailed, consistent character design, no text, no watermark, no logo, no speech bubbles",
+  "backgrounds": {
+    "title_sunset": {
+      "src": "/assets/bg/title_sunset.webp",
+      "pngFallback": "/assets/bg/title_sunset.png",
+      "srcset": "/assets/bg/title_sunset-640.webp 640w, /assets/bg/title_sunset-960.webp 960w, /assets/bg/title_sunset-1280.webp 1280w, /assets/bg/title_sunset-1920.webp 1920w, /assets/bg/title_sunset.webp 2560w",
+      "aspectRatio": "16:9",
+      "description": "Sunset horizon over city skyline with cherry blossom petals",
+      "fallbackGradient": "linear-gradient(180deg, #2A0F3F 0%, #6B2FA0 40%, #FFB48A 85%, #FFD27A 100%)"
+    },
+    "bus_stop_dusk": {
+      "src": "/assets/bg/bus_stop_dusk.webp",
+      "pngFallback": "/assets/bg/bus_stop_dusk.png",
+      "srcset": "/assets/bg/bus_stop_dusk-640.webp 640w, /assets/bg/bus_stop_dusk-960.webp 960w, /assets/bg/bus_stop_dusk-1280.webp 1280w, /assets/bg/bus_stop_dusk-1920.webp 1920w, /assets/bg/bus_stop_dusk.webp 2560w",
+      "aspectRatio": "16:9",
+      "description": "Twilight city bus stop with illuminated glass shelter and autumn street trees",
+      "fallbackGradient": "linear-gradient(180deg, #050716 0%, #0D1333 40%, #1B1438 85%, #2E1B4D 100%)"
+    },
+    "cab_ride": {
+      "src": "/assets/bg/cab_ride.webp",
+      "pngFallback": "/assets/bg/cab_ride.png",
+      "srcset": "/assets/bg/cab_ride-640.webp 640w, /assets/bg/cab_ride-960.webp 960w, /assets/bg/cab_ride-1280.webp 1280w, /assets/bg/cab_ride-1920.webp 1920w, /assets/bg/cab_ride.webp 2560w",
+      "aspectRatio": "16:9",
+      "description": "Rear passenger view inside cab looking through windshield at neon city dusk",
+      "fallbackGradient": "linear-gradient(180deg, #0D1117 0%, #161B22 50%, #090D16 100%)"
+    },
+    "crowded_market": {
+      "src": "/assets/bg/crowded_market.webp",
+      "pngFallback": "/assets/bg/crowded_market.png",
+      "srcset": "/assets/bg/crowded_market-640.webp 640w, /assets/bg/crowded_market-960.webp 960w, /assets/bg/crowded_market-1280.webp 1280w, /assets/bg/crowded_market-1920.webp 1920w, /assets/bg/crowded_market.webp 2560w",
+      "aspectRatio": "16:9",
+      "description": "Bustling Indian urban marketplace avenue with colorful fabric canopies and fruit stalls",
+      "fallbackGradient": "linear-gradient(180deg, #2D1500 0%, #5E2605 50%, #1E0B02 100%)"
+    },
+    "night_pharmacy": {
+      "src": "/assets/bg/night_pharmacy.webp",
+      "pngFallback": "/assets/bg/night_pharmacy.png",
+      "srcset": "/assets/bg/night_pharmacy-640.webp 640w, /assets/bg/night_pharmacy-960.webp 960w, /assets/bg/night_pharmacy-1280.webp 1280w, /assets/bg/night_pharmacy-1920.webp 1920w, /assets/bg/night_pharmacy.webp 2560w",
+      "aspectRatio": "16:9",
+      "description": "Urban street at night with glowing green/cyan 24/7 pharmacy storefront safe haven",
+      "fallbackGradient": "linear-gradient(180deg, #030712 0%, #0F172A 60%, #042F2E 100%)"
+    },
+    "campus_fest": {
+      "src": "/assets/bg/campus_fest.webp",
+      "pngFallback": "/assets/bg/campus_fest.png",
+      "srcset": "/assets/bg/campus_fest-640.webp 640w, /assets/bg/campus_fest-960.webp 960w, /assets/bg/campus_fest-1280.webp 1280w, /assets/bg/campus_fest-1920.webp 1920w, /assets/bg/campus_fest.webp 2560w",
+      "aspectRatio": "16:9",
+      "description": "College campus festival courtyard decorated with glowing fairy lights and paper lanterns",
+      "fallbackGradient": "linear-gradient(180deg, #1C0A35 0%, #3B1261 50%, #110524 100%)"
+    },
+    "sakhi_centre": {
+      "src": "/assets/bg/sakhi_centre.webp",
+      "pngFallback": "/assets/bg/sakhi_centre.png",
+      "srcset": "/assets/bg/sakhi_centre-640.webp 640w, /assets/bg/sakhi_centre-960.webp 960w, /assets/bg/sakhi_centre-1280.webp 1280w, /assets/bg/sakhi_centre-1920.webp 1920w, /assets/bg/sakhi_centre.webp 2560w",
+      "aspectRatio": "16:9",
+      "description": "Comfortable, dignified counseling room at Sakhi One Stop Centre with warm amber lighting",
+      "fallbackGradient": "linear-gradient(180deg, #1E1B18 0%, #3A3228 50%, #181512 100%)"
+    },
+    "legal_aid_office": {
+      "src": "/assets/bg/legal_aid_office.webp",
+      "pngFallback": "/assets/bg/legal_aid_office.png",
+      "srcset": "/assets/bg/legal_aid_office-640.webp 640w, /assets/bg/legal_aid_office-960.webp 960w, /assets/bg/legal_aid_office-1280.webp 1280w, /assets/bg/legal_aid_office-1920.webp 1920w, /assets/bg/legal_aid_office.webp 2560w",
+      "aspectRatio": "16:9",
+      "description": "Stately legal aid chamber with wooden bookshelves, law books, and warm study lamp",
+      "fallbackGradient": "linear-gradient(180deg, #0C1527 0%, #1E293B 50%, #0A0F1D 100%)"
+    }
+  },
+  "characters": {
+    "hero": {
+      "name": "{hero}",
+      "gender": "female",
+      "description": "Young Indian college student, purple jacket, white hoodie, pink-black headphones, wavy brown hair",
+      "expressions": {
+        "normal": {
+          "src": "/assets/chars/hero/normal.webp",
+          "pngFallback": "/assets/chars/hero/normal.png",
+          "srcset": "/assets/chars/hero/normal-512.webp 512w, /assets/chars/hero/normal-768.webp 768w, /assets/chars/hero/normal-1024.webp 1024w, /assets/chars/hero/normal.webp 1536w"
+        }
+      }
+    },
+    "friend_aanya": {
+      "name": "Aanya",
+      "gender": "female",
+      "description": "Bold best friend, short dark hair with teal highlights, sporty teal-green hoodie",
+      "expressions": {
+        "normal": {
+          "src": "/assets/chars/friend_aanya/normal.webp",
+          "pngFallback": "/assets/chars/friend_aanya/normal.png",
+          "srcset": "/assets/chars/friend_aanya/normal-512.webp 512w, /assets/chars/friend_aanya/normal-768.webp 768w, /assets/chars/friend_aanya/normal-1024.webp 1024w, /assets/chars/friend_aanya/normal.webp 1536w"
+        }
+      }
+    },
+    "helped_woman_anjali": {
+      "name": "Anjali",
+      "gender": "female",
+      "description": "Warm dignified Indian woman, pastel light-yellow kurta, floral dupatta",
+      "expressions": {
+        "normal": {
+          "src": "/assets/chars/helped_woman_anjali/normal.webp",
+          "pngFallback": "/assets/chars/helped_woman_anjali/normal.png",
+          "srcset": "/assets/chars/helped_woman_anjali/normal-512.webp 512w, /assets/chars/helped_woman_anjali/normal-768.webp 768w, /assets/chars/helped_woman_anjali/normal-1024.webp 1024w, /assets/chars/helped_woman_anjali/normal.webp 1536w"
+        }
+      }
+    },
+    "stranger_antagonist": {
+      "name": "Stranger",
+      "gender": "male",
+      "description": "Antagonist with dark baseball cap pulled low, dark jacket, sharp suspicious eyes, smirk",
+      "expressions": {
+        "normal": {
+          "src": "/assets/chars/stranger_antagonist/normal.webp",
+          "pngFallback": "/assets/chars/stranger_antagonist/normal.png",
+          "srcset": "/assets/chars/stranger_antagonist/normal-512.webp 512w, /assets/chars/stranger_antagonist/normal-768.webp 768w, /assets/chars/stranger_antagonist/normal-1024.webp 1024w, /assets/chars/stranger_antagonist/normal.webp 1536w"
+        }
+      }
+    },
+    "husband_antagonist": {
+      "name": "Husband",
+      "gender": "male",
+      "description": "Antagonist with sharp fitted dark shirt, chiseled jawline, calculating stern stare",
+      "expressions": {
+        "normal": {
+          "src": "/assets/chars/husband_antagonist/normal.webp",
+          "pngFallback": "/assets/chars/husband_antagonist/normal.png",
+          "srcset": "/assets/chars/husband_antagonist/normal-512.webp 512w, /assets/chars/husband_antagonist/normal-768.webp 768w, /assets/chars/husband_antagonist/normal-1024.webp 1024w, /assets/chars/husband_antagonist/normal.webp 1536w"
+        }
+      }
+    }
+  },
+  "ui": {
+    "celebration_fx": {
+      "src": "/assets/ui/celebration_fx.webp",
+      "pngFallback": "/assets/ui/celebration_fx.png"
+    },
+    "warning_alert_fx": {
+      "src": "/assets/ui/warning_alert_fx.webp",
+      "pngFallback": "/assets/ui/warning_alert_fx.png"
+    }
+  }
+}

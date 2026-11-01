@@ -1,10 +1,12 @@
 import React from 'react';
+import { playerNames } from '../utils/playerNames';
 
 interface HeroCinematicVisualProps {
   heroName?: string;
 }
 
-export const HeroCinematicVisual: React.FC<HeroCinematicVisualProps> = ({ heroName = 'Gyanvi' }) => {
+export const HeroCinematicVisual: React.FC<HeroCinematicVisualProps> = ({ heroName }) => {
+  const activeName = heroName || playerNames.getHeroName();
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden select-none pointer-events-none">
       {/* 1. Architectural Daylight & Morning Sky Canvas Layer */}
