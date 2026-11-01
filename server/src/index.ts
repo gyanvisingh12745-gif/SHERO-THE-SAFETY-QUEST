@@ -5,19 +5,53 @@ import { z } from 'zod';
 import { initDatabase, recordGameResult, getAggregateStats } from './db';
 import { MISSIONS, VERIFIED_SUPPORT_RESOURCES } from '../../shared/missionsData';
 
+// Security and routing imports
+import { securityHeadersMiddleware, rateLimiterMiddleware } from './middleware/security';
+import { errorHandler } from './middleware/errorHandler';
+import playerRoutes from './routes/playerRoutes';
+import missionRoutes from './routes/missionRoutes';
+import gameplayRoutes from './routes/gameplayRoutes';
+import progressRoutes from './routes/progressRoutes';
+import settingsRoutes from './routes/settingsRoutes';
+import resourceRoutes from './routes/resourceRoutes';
+import analyticsRoutes from './routes/analyticsRoutes';
+import adminRoutes from './routes/adminRoutes';
+import docsRoutes from './routes/docsRoutes';
+
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+// Core Middleware
 app.use(cors());
 app.use(express.json({ limit: '1mb' }));
+app.use(securityHeadersMiddleware);
+app.use(rateLimiterMiddleware);
+
+// ============================================================================
+// VERSION 1 REST APIS
+// ============================================================================
+app.use('/api/v1/players', playerRoutes);
+app.use('/api/v1/missions', missionRoutes);
+app.use('/api/v1/gameplay', gameplayRoutes);
+app.use('/api/v1/progress', progressRoutes);
+app.use('/api/v1/settings', settingsRoutes);
+app.use('/api/v1/resources', resourceRoutes);
+app.use('/api/v1/analytics', analyticsRoutes);
+app.use('/api/v1/admin', adminRoutes);
+app.use('/api/v1/docs', docsRoutes);
+
+// ============================================================================
+// LEGACY BACKWARD-COMPATIBLE ENDPOINTS (Unbroken Frontend Support)
+// ============================================================================
 
 // Health check
 app.get('/api/health', (req: Request, res: Response) => {
   res.json({
     status: 'ok',
     game: 'SHERO: The Safety Quest',
+    engine: 'SHERO Relational Core v2.0 (12 Canonical Missions)',
     timestamp: new Date().toISOString()
   });
 });
@@ -68,12 +102,6 @@ app.post('/api/game-results', (req: Request, res: Response) => {
   }
 
   const { missionId, score, status, decisionsCompleted } = parseResult.data;
-  const mission = MISSIONS.find(m => m.id === missionId);
-  if (!mission) {
-    res.status(404).json({ error: 'Specified mission does not exist' });
-    return;
-  }
-
   try {
     recordGameResult(missionId, score, status, decisionsCompleted);
     res.json({ success: true, message: 'Game result persisted successfully' });
@@ -115,44 +143,36 @@ app.get('/api/support-resources', (req: Request, res: Response) => {
   res.json(resources);
 });
 
-// Optional AI Explanation endpoint
+// AI Explanation endpoint
 app.post('/api/ai/explain', async (req: Request, res: Response) => {
-  const { situation, choiceText, isCorrect } = req.body;
-  const apiKey = process.env.AI_API_KEY;
-
-  if (!apiKey) {
-    res.json({
-      fallback: true,
-      explanation: isCorrect
-        ? 'Situational awareness, boundary clarity, and early de-escalation maximize personal security in high-risk scenarios.'
-        : 'This action risks escalating exposure, surrendering mobility, or diminishing available emergency support.'
-    });
-    return;
-  }
-
-  // If a valid key is provided in .env, call authorized API (educational ground only)
-  try {
-    res.json({
-      fallback: false,
-      explanation: 'Educational guidance generated based on approved safety standards.'
-    });
-  } catch {
-    res.json({
-      fallback: true,
-      explanation: 'Safety first: Distance, populated zones, and verified resources are your key protections.'
-    });
-  }
+  const { isCorrect } = req.body;
+  res.json({
+    fallback: true,
+    explanation: isCorrect
+      ? 'Situational awareness, boundary clarity, and early de-escalation maximize personal security in high-risk scenarios.'
+      : 'This action risks escalating exposure, surrendering mobility, or diminishing available emergency support.'
+  });
 });
 
+// Centralized error handler
+app.use(errorHandler);
+
 // Start server
-async function start() {
+export async function startServer() {
   await initDatabase();
-  app.listen(PORT, () => {
+  return app.listen(PORT, () => {
     console.log(`[SHERO Backend] Server running at http://localhost:${PORT}`);
+    console.log(`[SHERO Backend] REST v1 API: http://localhost:${PORT}/api/v1`);
+    console.log(`[SHERO Backend] Interactive OpenAPI Docs: http://localhost:${PORT}/api/v1/docs`);
   });
 }
 
-start().catch(err => {
-  console.error('[SHERO Backend] Fatal startup error:', err);
-  process.exit(1);
-});
+// Auto-start when executed directly
+if (process.env.NODE_ENV !== 'test' && !process.env.VITEST) {
+  startServer().catch(err => {
+    console.error('[SHERO Backend] Fatal startup error:', err);
+    process.exit(1);
+  });
+}
+
+export default app;
