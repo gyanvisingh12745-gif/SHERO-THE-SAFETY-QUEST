@@ -153,10 +153,10 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
     // 1. Intro panels
     if (sceneData.introPanels && sceneData.introPanels.length > 0) {
       sceneData.introPanels.forEach((p, idx) => {
-        const vKey = p.visualKey || p.imageKey || '01_meet_gyanvi';
+        const vKey = p.visualKey || p.imageKey || 'player_neutral';
         turns.push({
           id: p.id || `intro_${idx}`,
-          imageSrc: vKey.startsWith('/') ? vKey : `/comic/${vKey}.png`,
+          imageSrc: vKey.startsWith('/') ? vKey : `/assets/mission-01/player/${vKey}.webp`,
           titleEn: p.title || 'Scene Introduction',
           titleHi: p.titleHi || 'दृश्य परिचय',
           speaker: 'Narrator',
@@ -463,9 +463,9 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
   const heroName = playerNames.getHeroName();
   const helpedName = playerNames.getHelpedWomanName();
 
-  // Dynamic image resolution for current state — ONLY use file if it actually exists in Mission 1 comic bundle
+  // Dynamic image resolution for current state
   const activeImageSrc = useMemo(() => {
-    // Only Mission 1 (A1) has pre-baked comic panel illustrations in /comic/ & /assets/mission-01/
+    // Only Mission 1 (A1) has pre-baked cinematic illustrations in /assets/mission-01/
     const isMission1 = sceneData.code === 'A1' || sceneData.number === 1;
 
     if (isMission1) {
@@ -709,15 +709,12 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
               />
 
               {activeImageSrc ? (
-                <picture className="w-full h-full flex items-center justify-center">
-                  <source srcSet={activeImageSrc} type="image/webp" />
-                  <img
-                    src={activeImageSrc.replace(/\.webp$/, '.png')}
-                    alt={currentTurn?.titleEn || 'Scene'}
-                    className="w-full h-full object-contain sm:object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700 ease-out z-10"
-                    loading="eager"
-                  />
-                </picture>
+                <img
+                  src={activeImageSrc}
+                  alt={currentTurn?.titleEn || 'Scene'}
+                  className="w-full h-full object-contain sm:object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700 ease-out z-10"
+                  loading="eager"
+                />
               ) : (
                 /* Dynamic living character visual with CharacterRig inside the panel frame */
                 <div className="w-full h-full flex items-center justify-around relative p-4 z-10">
@@ -875,17 +872,14 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
           <div className="relative w-full max-w-4xl h-full flex flex-col items-center justify-between animate-in zoom-in-95 duration-300">
             {/* Visual Header / Bus Stop Scene */}
             <div className="relative w-full flex-1 max-h-[45vh] rounded-3xl overflow-hidden border-2 border-purple-500/70 shadow-2xl bg-black flex items-center justify-center">
-              <picture className="w-full h-full flex items-center justify-center">
-                <source srcSet="/assets/mission-01/environment/busstop_interaction.webp" type="image/webp" />
-                <img
-                  src="/assets/mission-01/environment/busstop_interaction.png"
-                  alt="Decision Scene"
-                  className="w-full h-full object-contain sm:object-cover"
-                  onError={e => {
-                    (e.target as HTMLImageElement).src = '/assets/mission-01/player/player_scared.webp';
-                  }}
-                />
-              </picture>
+              <img
+                src="/assets/mission-01/environment/busstop_interaction.webp"
+                alt="Decision Scene"
+                className="w-full h-full object-contain sm:object-cover"
+                onError={e => {
+                  (e.target as HTMLImageElement).src = '/assets/mission-01/player/player_scared.webp';
+                }}
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-black/40" />
 
               <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-10 bg-gradient-to-r from-pink-600 to-rose-600 text-white font-black text-xs px-3.5 py-1 rounded-full uppercase tracking-wider shadow">
@@ -951,14 +945,11 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
               isAnswerCorrect ? 'border-emerald-500 ring-2 ring-emerald-400/40' : 'border-rose-500 ring-2 ring-rose-400/40'
             }`}>
               {selectedChoice.outcomeImageSrc ? (
-                <picture className="w-full h-full flex items-center justify-center">
-                  <source srcSet={selectedChoice.outcomeImageSrc} type="image/webp" />
-                  <img
-                    src={selectedChoice.outcomeImageSrc.replace(/\.webp$/, '.png')}
-                    alt="Outcome Scene"
-                    className="w-full h-full object-contain sm:object-cover"
-                  />
-                </picture>
+                <img
+                  src={selectedChoice.outcomeImageSrc}
+                  alt="Outcome Scene"
+                  className="w-full h-full object-contain sm:object-cover"
+                />
               ) : (
                 <UnifiedAnimeCharacter
                   id="gyanvi"
@@ -1048,14 +1039,11 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
             {/* Takeaways Picture Frame */}
             <div className="relative w-full flex-1 max-h-[56vh] rounded-3xl overflow-hidden border-2 border-purple-500/80 shadow-2xl bg-black flex items-center justify-center">
               {sceneData.takeawayImageSrc ? (
-                <picture className="w-full h-full flex items-center justify-center">
-                  <source srcSet={sceneData.takeawayImageSrc} type="image/webp" />
-                  <img
-                    src={sceneData.takeawayImageSrc.replace(/\.webp$/, '.png')}
-                    alt="Key Takeaways"
-                    className="w-full h-full object-contain sm:object-cover"
-                  />
-                </picture>
+                <img
+                  src={sceneData.takeawayImageSrc}
+                  alt="Key Takeaways"
+                  className="w-full h-full object-contain sm:object-cover"
+                />
               ) : (
                 <UnifiedAnimeCharacter id="gyanvi" expression="happy" scale={1.2} />
               )}

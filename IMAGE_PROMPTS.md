@@ -11,7 +11,7 @@
 All characters adhere to their Master Design Sheets to ensure facial features, hair geometry, skin tones, and outfits stay 100% consistent across every expression and scene.
 
 ### Hero Protagonist (`{hero}`)
-- **Reference Sheet:** `public/comic/01_meet_gyanvi.png` (Character design reference)
+- **Reference Sheet:** `public/assets/mission-01/player/player_neutral.webp` (Character design reference)
 - **Visual Description:** Young Indian college woman (19-21 years old). Long wavy dark-brown hair cascading over shoulders, warm amber-brown eyes, purple jacket over a white hoodie, pink and black over-ear headphones resting around neck, blue denim jeans, brown leather notebook, dark backpack straps.
 - **Master Prompts per Expression:**
   - `normal.webp`: *"Hero standing direct/three-quarters portrait, calm gentle smile, amber eyes, long wavy dark-brown hair, purple jacket over white hoodie, pink-black headphones around neck, clean line art, white background."*

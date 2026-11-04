@@ -78,7 +78,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Hero Neutral',
     titleHi: 'नायिका सामान्य',
     srcWebp: '/assets/mission-01/player/player_neutral.webp',
-    srcFallback: '/assets/mission-01/player/player_neutral.png',
+    srcFallback: '/assets/mission-01/player/player_neutral.webp',
     defaultFit: 'contain',
     characterRole: 'hero'
   },
@@ -88,7 +88,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Hero Happy',
     titleHi: 'नायिका प्रसन्न',
     srcWebp: '/assets/mission-01/player/player_happy.webp',
-    srcFallback: '/assets/mission-01/player/player_happy.png',
+    srcFallback: '/assets/mission-01/player/player_happy.webp',
     defaultFit: 'contain',
     characterRole: 'hero'
   },
@@ -98,7 +98,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Hero Excited',
     titleHi: 'नायिका उत्साहित',
     srcWebp: '/assets/mission-01/player/player_excited.webp',
-    srcFallback: '/assets/mission-01/player/player_excited.png',
+    srcFallback: '/assets/mission-01/player/player_excited.webp',
     defaultFit: 'contain',
     characterRole: 'hero'
   },
@@ -108,7 +108,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Hero Confused',
     titleHi: 'नायिका असमंजस में',
     srcWebp: '/assets/mission-01/player/player_confused.webp',
-    srcFallback: '/assets/mission-01/player/player_confused.png',
+    srcFallback: '/assets/mission-01/player/player_confused.webp',
     defaultFit: 'contain',
     characterRole: 'hero'
   },
@@ -118,7 +118,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Hero Scared',
     titleHi: 'नायिका भयभीत',
     srcWebp: '/assets/mission-01/player/player_scared.webp',
-    srcFallback: '/assets/mission-01/player/player_scared.png',
+    srcFallback: '/assets/mission-01/player/player_scared.webp',
     defaultFit: 'contain',
     characterRole: 'hero'
   },
@@ -128,7 +128,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Hero Shocked',
     titleHi: 'नायिका स्तब्ध',
     srcWebp: '/assets/mission-01/player/player_shocked.webp',
-    srcFallback: '/assets/mission-01/player/player_shocked.png',
+    srcFallback: '/assets/mission-01/player/player_shocked.webp',
     defaultFit: 'contain',
     characterRole: 'hero'
   },
@@ -138,7 +138,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Hero Sad',
     titleHi: 'नायिका उदास',
     srcWebp: '/assets/mission-01/player/player_sad.webp',
-    srcFallback: '/assets/mission-01/player/player_sad.png',
+    srcFallback: '/assets/mission-01/player/player_sad.webp',
     defaultFit: 'contain',
     characterRole: 'hero'
   },
@@ -148,7 +148,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Hero Crying',
     titleHi: 'नायिका रोती हुई',
     srcWebp: '/assets/mission-01/player/player_crying.webp',
-    srcFallback: '/assets/mission-01/player/player_crying.png',
+    srcFallback: '/assets/mission-01/player/player_crying.webp',
     defaultFit: 'contain',
     characterRole: 'hero'
   },
@@ -158,7 +158,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Hero Thinking',
     titleHi: 'नायिका विचारशील',
     srcWebp: '/assets/mission-01/player/player_thinking.webp',
-    srcFallback: '/assets/mission-01/player/player_thinking.png',
+    srcFallback: '/assets/mission-01/player/player_thinking.webp',
     defaultFit: 'contain',
     characterRole: 'hero'
   },
@@ -168,7 +168,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Hero Determined',
     titleHi: 'नायिका दृढ़ निश्चयी',
     srcWebp: '/assets/mission-01/player/player_determined.webp',
-    srcFallback: '/assets/mission-01/player/player_determined.png',
+    srcFallback: '/assets/mission-01/player/player_determined.webp',
     defaultFit: 'contain',
     characterRole: 'hero'
   },
@@ -180,7 +180,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Hero Standing',
     titleHi: 'नायिका खड़ी हुई',
     srcWebp: '/assets/mission-01/player_poses/player_standing.webp',
-    srcFallback: '/assets/mission-01/player_poses/player_standing.png',
+    srcFallback: '/assets/mission-01/player_poses/player_standing.webp',
     defaultFit: 'contain',
     characterRole: 'hero'
   },
@@ -190,7 +190,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Hero Sitting on Bench',
     titleHi: 'नायिका बेंच पर बैठी',
     srcWebp: '/assets/mission-01/player_poses/player_sitting.webp',
-    srcFallback: '/assets/mission-01/player_poses/player_sitting.png',
+    srcFallback: '/assets/mission-01/player_poses/player_sitting.webp',
     defaultFit: 'cover',
     characterRole: 'hero'
   },
@@ -200,7 +200,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Hero Looking Back',
     titleHi: 'नायिका मुड़कर देखती हुई',
     srcWebp: '/assets/mission-01/player_poses/player_looking_back.webp',
-    srcFallback: '/assets/mission-01/player_poses/player_looking_back.png',
+    srcFallback: '/assets/mission-01/player_poses/player_looking_back.webp',
     defaultFit: 'contain',
     characterRole: 'hero'
   },
@@ -210,7 +210,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Hero Holding Phone',
     titleHi: 'नायिका फ़ोन पकड़े हुए',
     srcWebp: '/assets/mission-01/player_poses/player_holding_phone.webp',
-    srcFallback: '/assets/mission-01/player_poses/player_holding_phone.png',
+    srcFallback: '/assets/mission-01/player_poses/player_holding_phone.webp',
     defaultFit: 'cover',
     characterRole: 'hero'
   },
@@ -220,7 +220,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Hero Walking to Safety',
     titleHi: 'नायिका सुरक्षित स्थान की ओर बढ़ती',
     srcWebp: '/assets/mission-01/player_poses/player_walking_to_safety.webp',
-    srcFallback: '/assets/mission-01/player_poses/player_walking_to_safety.png',
+    srcFallback: '/assets/mission-01/player_poses/player_walking_to_safety.webp',
     defaultFit: 'cover',
     characterRole: 'hero'
   },
@@ -232,7 +232,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Stranger Neutral',
     titleHi: 'अजनबी सामान्य',
     srcWebp: '/assets/mission-01/stranger/stranger_neutral.webp',
-    srcFallback: '/assets/mission-01/stranger/stranger_neutral.png',
+    srcFallback: '/assets/mission-01/stranger/stranger_neutral.webp',
     defaultFit: 'contain',
     characterRole: 'stranger'
   },
@@ -242,7 +242,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Stranger Speaking',
     titleHi: 'अजनबी बात करता हुआ',
     srcWebp: '/assets/mission-01/stranger/stranger_speaking.webp',
-    srcFallback: '/assets/mission-01/stranger/stranger_speaking.png',
+    srcFallback: '/assets/mission-01/stranger/stranger_speaking.webp',
     defaultFit: 'contain',
     characterRole: 'stranger'
   },
@@ -252,7 +252,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Stranger Suspicious',
     titleHi: 'अजनबी संदेहास्पद',
     srcWebp: '/assets/mission-01/stranger/stranger_suspicious.webp',
-    srcFallback: '/assets/mission-01/stranger/stranger_suspicious.png',
+    srcFallback: '/assets/mission-01/stranger/stranger_suspicious.webp',
     defaultFit: 'contain',
     characterRole: 'stranger'
   },
@@ -262,7 +262,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Stranger Smirking',
     titleHi: 'अजनबी मुस्कुराता हुआ',
     srcWebp: '/assets/mission-01/stranger/stranger_smiling.webp',
-    srcFallback: '/assets/mission-01/stranger/stranger_smiling.png',
+    srcFallback: '/assets/mission-01/stranger/stranger_smiling.webp',
     defaultFit: 'contain',
     characterRole: 'stranger'
   },
@@ -272,7 +272,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Stranger Irritated',
     titleHi: 'अजनबी चिढ़ा हुआ',
     srcWebp: '/assets/mission-01/stranger/stranger_irritated.webp',
-    srcFallback: '/assets/mission-01/stranger/stranger_irritated.png',
+    srcFallback: '/assets/mission-01/stranger/stranger_irritated.webp',
     defaultFit: 'contain',
     characterRole: 'stranger'
   },
@@ -282,7 +282,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Stranger Startled',
     titleHi: 'अजनबी चौंका हुआ',
     srcWebp: '/assets/mission-01/stranger/stranger_surprised.webp',
-    srcFallback: '/assets/mission-01/stranger/stranger_surprised.png',
+    srcFallback: '/assets/mission-01/stranger/stranger_surprised.webp',
     defaultFit: 'contain',
     characterRole: 'stranger'
   },
@@ -294,7 +294,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Bus Driver Neutral',
     titleHi: 'बस चालक सामान्य',
     srcWebp: '/assets/mission-01/driver/driver_neutral.webp',
-    srcFallback: '/assets/mission-01/driver/driver_neutral.png',
+    srcFallback: '/assets/mission-01/driver/driver_neutral.webp',
     defaultFit: 'contain',
     characterRole: 'busDriver'
   },
@@ -304,7 +304,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Bus Driver Helpful',
     titleHi: 'बस चालक मददगार',
     srcWebp: '/assets/mission-01/driver/driver_helpful.webp',
-    srcFallback: '/assets/mission-01/driver/driver_helpful.png',
+    srcFallback: '/assets/mission-01/driver/driver_helpful.webp',
     defaultFit: 'contain',
     characterRole: 'busDriver'
   },
@@ -316,7 +316,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Bus Stop Wide Angle',
     titleHi: 'बस स्टैंड विहंगम दृश्य',
     srcWebp: '/assets/mission-01/environment/busstop_wide.webp',
-    srcFallback: '/assets/mission-01/environment/busstop_wide.png',
+    srcFallback: '/assets/mission-01/environment/busstop_wide.webp',
     defaultFit: 'cover'
   },
   busstop_interaction: {
@@ -325,7 +325,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Bus Stop Evening Atmosphere',
     titleHi: 'बस स्टैंड शाम का माहौल',
     srcWebp: '/assets/mission-01/environment/busstop_interaction.webp',
-    srcFallback: '/assets/mission-01/environment/busstop_interaction.png',
+    srcFallback: '/assets/mission-01/environment/busstop_interaction.webp',
     defaultFit: 'cover'
   },
   busstop_arrival: {
@@ -334,7 +334,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Bus Arrival at Night Shelter',
     titleHi: 'रात में बस का आगमन',
     srcWebp: '/assets/mission-01/environment/busstop_arrival.webp',
-    srcFallback: '/assets/mission-01/environment/busstop_arrival.png',
+    srcFallback: '/assets/mission-01/environment/busstop_arrival.webp',
     defaultFit: 'cover'
   },
 
@@ -345,7 +345,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Waiting Alone in the Rain',
     titleHi: 'बारिश में अकेले इंतज़ार',
     srcWebp: '/assets/mission-01/story/story_waiting.webp',
-    srcFallback: '/assets/mission-01/story/story_waiting.png',
+    srcFallback: '/assets/mission-01/story/story_waiting.webp',
     defaultFit: 'cover'
   },
   story_stranger_approaches: {
@@ -354,7 +354,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Stranger Closes the Distance',
     titleHi: 'अजनबी का करीब आना',
     srcWebp: '/assets/mission-01/story/story_stranger_approaches.webp',
-    srcFallback: '/assets/mission-01/story/story_stranger_approaches.png',
+    srcFallback: '/assets/mission-01/story/story_stranger_approaches.webp',
     defaultFit: 'cover'
   },
   story_uncomfortable_conversation: {
@@ -363,7 +363,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Persistent Unwanted Conversation',
     titleHi: 'असहज बातचीत',
     srcWebp: '/assets/mission-01/story/story_uncomfortable_conversation.webp',
-    srcFallback: '/assets/mission-01/story/story_uncomfortable_conversation.png',
+    srcFallback: '/assets/mission-01/story/story_uncomfortable_conversation.webp',
     defaultFit: 'cover'
   },
   story_reaching_for_phone: {
@@ -372,7 +372,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Reaching for Safety Contacts',
     titleHi: 'सुरक्षा संपर्कों की जाँच',
     srcWebp: '/assets/mission-01/story/story_reaching_for_phone.webp',
-    srcFallback: '/assets/mission-01/story/story_reaching_for_phone.png',
+    srcFallback: '/assets/mission-01/story/story_reaching_for_phone.webp',
     defaultFit: 'cover'
   },
   story_seeking_assistance: {
@@ -381,7 +381,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Seeking Assistance from Driver',
     titleHi: 'बस चालक से सहायता माँगना',
     srcWebp: '/assets/mission-01/story/story_seeking_assistance.webp',
-    srcFallback: '/assets/mission-01/story/story_seeking_assistance.png',
+    srcFallback: '/assets/mission-01/story/story_seeking_assistance.webp',
     defaultFit: 'cover'
   },
   story_safe_resolution: {
@@ -390,7 +390,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Safe Transit Home',
     titleHi: 'घर की सुरक्षित यात्रा',
     srcWebp: '/assets/mission-01/story/story_safe_resolution.webp',
-    srcFallback: '/assets/mission-01/story/story_safe_resolution.png',
+    srcFallback: '/assets/mission-01/story/story_safe_resolution.webp',
     defaultFit: 'cover'
   },
 
@@ -401,7 +401,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Outcome: Move to Bright Well-Lit Zone',
     titleHi: 'परिणाम: रोशनी वाले स्थान की ओर बढ़ना',
     srcWebp: '/assets/mission-01/outcomes/outcome_safe_decision.webp',
-    srcFallback: '/assets/mission-01/outcomes/outcome_safe_decision.png',
+    srcFallback: '/assets/mission-01/outcomes/outcome_safe_decision.webp',
     defaultFit: 'cover'
   },
   outcome_maintain_distance: {
@@ -410,7 +410,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Outcome: Maintain Clear Spatial Distance',
     titleHi: 'परिणाम: सुरक्षित दूरी बनाए रखना',
     srcWebp: '/assets/mission-01/outcomes/outcome_maintain_distance.webp',
-    srcFallback: '/assets/mission-01/outcomes/outcome_maintain_distance.png',
+    srcFallback: '/assets/mission-01/outcomes/outcome_maintain_distance.webp',
     defaultFit: 'cover'
   },
   outcome_ask_for_help: {
@@ -419,7 +419,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Outcome: Board Bus & Alert Driver',
     titleHi: 'परिणाम: बस में चढ़ना और चालक को सूचित करना',
     srcWebp: '/assets/mission-01/outcomes/outcome_ask_for_help.webp',
-    srcFallback: '/assets/mission-01/outcomes/outcome_ask_for_help.png',
+    srcFallback: '/assets/mission-01/outcomes/outcome_ask_for_help.webp',
     defaultFit: 'cover'
   },
   outcome_mission_success: {
@@ -428,7 +428,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Outcome: Safe Arrival & Mission Victory',
     titleHi: 'परिणाम: सुरक्षित पहुँच और मिशन में विजय',
     srcWebp: '/assets/mission-01/outcomes/outcome_mission_success.webp',
-    srcFallback: '/assets/mission-01/outcomes/outcome_mission_success.png',
+    srcFallback: '/assets/mission-01/outcomes/outcome_mission_success.webp',
     defaultFit: 'cover'
   },
   outcome_mission_ending: {
@@ -437,7 +437,7 @@ export const MISSION_01_ASSETS: Record<Mission01AssetId, Mission01AssetEntry> = 
     titleEn: 'Outcome: Empowered Journey Forward',
     titleHi: 'परिणाम: सशक्त और जागरूक भविष्य',
     srcWebp: '/assets/mission-01/outcomes/outcome_mission_ending.webp',
-    srcFallback: '/assets/mission-01/outcomes/outcome_mission_ending.png',
+    srcFallback: '/assets/mission-01/outcomes/outcome_mission_ending.webp',
     defaultFit: 'cover'
   }
 };

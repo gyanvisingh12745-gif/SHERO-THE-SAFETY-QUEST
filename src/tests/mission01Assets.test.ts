@@ -8,7 +8,6 @@ import { CHARACTER_VOICE_CONFIGS } from '../utils/speech';
 const PUBLIC_DIR = path.resolve(__dirname, '../../public');
 const ASSETS_DIR = path.join(PUBLIC_DIR, 'assets', 'mission-01');
 const MANIFEST_JSON_PATH = path.join(PUBLIC_DIR, 'assets', 'mission01_manifest.json');
-const MASTERS_DIR = path.join(ASSETS_DIR, 'masters');
 
 describe('Mission 01 4K Asset Integration & Gender Voice Quality Gates', () => {
   it('1. Exactly 37 assets exist in the manifest covering all required categories', () => {
@@ -39,21 +38,16 @@ describe('Mission 01 4K Asset Integration & Gender Voice Quality Gates', () => {
     expect(categories.outcomes).toBe(5);
   });
 
-  it('2. Every asset resolves to physical 4K WebP and PNG files on disk', () => {
+  it('2. Every asset resolves to physical 4K WebP file on disk', () => {
     const keys = Object.keys(MISSION_01_ASSETS) as Mission01AssetId[];
     for (const key of keys) {
       const entry = MISSION_01_ASSETS[key];
       const webpDiskPath = path.join(PUBLIC_DIR, entry.srcWebp.replace(/^\//, ''));
-      const pngDiskPath = path.join(PUBLIC_DIR, entry.srcFallback.replace(/^\//, ''));
 
       expect(fs.existsSync(webpDiskPath), `WebP file must exist: ${webpDiskPath}`).toBe(true);
-      expect(fs.existsSync(pngDiskPath), `PNG file must exist: ${pngDiskPath}`).toBe(true);
 
       const webpStat = fs.statSync(webpDiskPath);
-      const pngStat = fs.statSync(pngDiskPath);
-
       expect(webpStat.size).toBeGreaterThan(10000); // Valid image data
-      expect(pngStat.size).toBeGreaterThan(10000);
     }
   });
 
@@ -74,10 +68,10 @@ describe('Mission 01 4K Asset Integration & Gender Voice Quality Gates', () => {
     }
   });
 
-  it('4. Raw original masters are preserved intact in masters directory', () => {
-    expect(fs.existsSync(MASTERS_DIR)).toBe(true);
-    const files = fs.readdirSync(MASTERS_DIR);
-    expect(files.length).toBe(31);
+  it('4. Repository hygiene: no temporary masters, chat media, or obsolete comic files in public assets', () => {
+    expect(fs.existsSync(path.join(ASSETS_DIR, 'masters'))).toBe(false);
+    expect(fs.existsSync(path.join(PUBLIC_DIR, 'assets', 'provided'))).toBe(false);
+    expect(fs.existsSync(path.join(PUBLIC_DIR, 'comic'))).toBe(false);
   });
 
   it('5. Gender-appropriate audio roles and voice configurations are strictly enforced', () => {

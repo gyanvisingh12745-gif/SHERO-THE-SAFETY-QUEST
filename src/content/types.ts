@@ -102,7 +102,7 @@ export interface CrowdCharacter {
 
 export interface StoryboardTurn {
   id: string;
-  imageSrc?: string; // e.g. '/comic/01_meet_gyanvi.png'
+  imageSrc?: string; // e.g. '/assets/mission-01/player/player_neutral.webp'
   titleEn?: string;
   titleHi?: string;
   speaker: string;
@@ -134,7 +134,7 @@ export interface SceneChoice {
   boundariesDelta?: number;
   independenceDelta?: number;
   supportDelta?: number;
-  outcomeImageSrc?: string; // e.g. '/comic/09_choice1_safe_walkaway.png'
+  outcomeImageSrc?: string; // e.g. '/assets/mission-01/outcomes/outcome_safe_decision.webp'
   outcomeSpeaker?: string;
   outcomeSpeakerRole?: 'hero' | 'stranger' | 'narrator';
   outcomeDialogueEn?: string;
